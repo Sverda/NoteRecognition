@@ -62,6 +62,12 @@
     <Compile Include="Controls\FftPlotUc.Designer.cs">
       <DependentUpon>FftPlotUc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NoteIndication.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NoteIndication.Designer.cs">
+      <DependentUpon>NoteIndication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\DragAndDropState.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -76,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FftPlotUc.resx">
       <DependentUpon>FftPlotUc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NoteIndication.resx">
+      <DependentUpon>NoteIndication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

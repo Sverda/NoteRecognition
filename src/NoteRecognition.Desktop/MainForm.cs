@@ -39,14 +39,15 @@ namespace NoteRecognition.Desktop
             var waveReader = new WaveDataFileReader(fileName);
             _audioAnalyzer = new AudioAnalyzer(waveReader)
             {
-                UseLogScale = false,
-                FftLength = 1024,
-                Overlap = 0
+                FftLength = 1024
             };
             _audioAnalyzer.AnalyzeValues();
 
             audioPlotUc1.Analyzer = _audioAnalyzer;
             audioPlotUc1.UpdatePlot();
+
+            noteIndication.Analyzer = _audioAnalyzer;
+            noteIndication.UpdateNote();
 
             fftPlotUc1.Analyzer = _audioAnalyzer;
             fftPlotUc1.UpdatePlot();

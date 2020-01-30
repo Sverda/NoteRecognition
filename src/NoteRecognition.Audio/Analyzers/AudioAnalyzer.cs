@@ -31,16 +31,19 @@ namespace NoteRecognition.Audio.Analyzers
         public void AnalyzeValues()
         {
             if (WaveFileReader.Samples.Count == 0)
+            {
                 return;
+            }
 
-            var audioBatches = splitIntoChunks(WaveFileReader.Samples, FftLength);
+            var audioBatches = SplitIntoChunks(WaveFileReader.Samples, FftLength);
             foreach (var batch in audioBatches)
             {
                 var samples = (List<float>)batch;
                 if (samples.Count < FftLength)
                 {
-                    continue; ;
+                    continue;
                 }
+
                 FftSamples = new Complex[FftLength];
                 foreach (var sample in samples)
                 {
@@ -64,9 +67,17 @@ namespace NoteRecognition.Audio.Analyzers
                 specDataColumn.Reverse();
                 SpecData.Add(specDataColumn);
             }
+
+            var max = SpecData.Max(d => d.Max());
         }
 
-        public IEnumerable<IEnumerable<float>> BatchFftSamplesPerMilisecond()
+        private static IEnumerable<IEnumerable<float>> SplitIntoChunks(IEnumerable<float> collection, int chunkSize) => collection
+            .Select((s, i) => new { Index = i, Value = s })
+            .GroupBy(indexedItem => indexedItem.Index / chunkSize)
+            .Select(x => x.Select(v => v.Value).ToList())
+            .ToList();
+
+        public IEnumerable<IEnumerable<float>> BatchFftSamplesPerMillisecond()
         {
             var batch = FftSamples.Select((s, i) => new { Index = i, Value = s.X })
                 .GroupBy(indexedSample => indexedSample.Value / WaveFileReader.SamplesPerMillisecond,
@@ -74,11 +85,5 @@ namespace NoteRecognition.Audio.Analyzers
                 .Cast<IEnumerable<float>>();
             return batch;
         }
-
-        private IEnumerable<IEnumerable<float>> splitIntoChunks(IEnumerable<float> collection, int chunkSize) => collection
-            .Select((s, i) => new { Index = i, Value = s })
-            .GroupBy(indexedItem => indexedItem.Index / chunkSize)
-            .Select(x => x.Select(v => v.Value).ToList())
-            .ToList();
     }
 }
