@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29521.150
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteRecognition.Desktop", "src\NoteRecognition.Desktop\NoteRecognition.Desktop.csproj", "{AA715B6B-4664-4E3A-A163-9F050D0FF996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteRecognition.Audio", "src\NoteRecognition.Audio\NoteRecognition.Audio.csproj", "{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA715B6B-4664-4E3A-A163-9F050D0FF996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA715B6B-4664-4E3A-A163-9F050D0FF996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA715B6B-4664-4E3A-A163-9F050D0FF996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA715B6B-4664-4E3A-A163-9F050D0FF996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0C04B2E-836F-4116-87F8-34103493E8CF}
+	EndGlobalSection
+EndGlobal
