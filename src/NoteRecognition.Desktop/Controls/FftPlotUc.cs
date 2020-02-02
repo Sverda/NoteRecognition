@@ -31,7 +31,8 @@ namespace NoteRecognition.Desktop.Controls
             var amountOfPositiveFrequencyValues = fftSamples.Count / 2;
 
             var maxFftFrequency = Analyzer.WaveFileReader.SamplingFrequency;
-            chart1.ChartAreas[0].AxisX.Maximum = maxFftFrequency;
+            chart1.ChartAreas[0].AxisX.Minimum = 390d;
+            chart1.ChartAreas[0].AxisX.Maximum = 790d;
             var frequencyStep = maxFftFrequency / amountOfPositiveFrequencyValues;
 
             var frequency = 0d;

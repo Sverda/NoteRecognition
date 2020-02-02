@@ -39,7 +39,7 @@ namespace NoteRecognition.Desktop
             var waveReader = new WaveDataFileReader(fileName);
             _audioAnalyzer = new AudioAnalyzer(waveReader)
             {
-                FftLength = 1024
+                FftLength = 1024 * 16
             };
             _audioAnalyzer.AnalyzeValues();
 
