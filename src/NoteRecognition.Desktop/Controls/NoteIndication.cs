@@ -4,7 +4,9 @@ namespace NoteRecognition.Desktop.Controls
 {
     public partial class NoteIndication : UserControl
     {
-        public double MaxMagnitude { get; set; }
+        public double MaxMagnitudeInDb { get; set; }
+
+        public double MaxMagnitudeFrequency { get; set; }
 
         public NoteIndication()
         {
@@ -13,7 +15,8 @@ namespace NoteRecognition.Desktop.Controls
 
         public void UpdateControl()
         {
-            noteOutput.Text = MaxMagnitude.ToString();
+            noteOutputDb.Text = $"{MaxMagnitudeInDb}";
+            noteOutputHz.Text = $"{MaxMagnitudeFrequency}";
         }
     }
 }

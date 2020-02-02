@@ -1,5 +1,5 @@
 ﻿using NoteRecognition.Audio.Analyzers;
-using System;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -27,18 +27,16 @@ namespace NoteRecognition.Desktop.Controls
 
         public void UpdatePlot()
         {
-            var fftSamples = Analyzer.FindSpecColumnWithMaxMagnitude();
-            var bins = fftSamples.Count;
-            var firstPeak = bins / 2;   // The first peak is for a positive frequency
+            var fftSamples = Analyzer.FindSpecColumnWithMaxAmplitudeInDb();
+            var amountOfPositiveFrequencyValues = fftSamples.Count / 2;
 
-            var maxFftFrequency = Analyzer.WaveFileReader.SamplesPerMillisecond * 1000;  // frequency (Hz) is cycles per second
+            var maxFftFrequency = Analyzer.WaveFileReader.SamplesPerMillisecond * 1000;
             chart1.ChartAreas[0].AxisX.Maximum = maxFftFrequency;
-            var frequencyStep = maxFftFrequency / firstPeak;
+            var frequencyStep = maxFftFrequency / amountOfPositiveFrequencyValues;
+
             var frequency = 0;
-            for (var i = 0; i < firstPeak; i++)
+            foreach (var intensityDb in fftSamples.Take(amountOfPositiveFrequencyValues))
             {
-                var amplitude = fftSamples[i];
-                var intensityDb = -10 * Math.Log(10) * Math.Log10(amplitude);
                 chart1.Series[_chartName].Points.AddXY(frequency, intensityDb);
                 frequency += frequencyStep;
             }

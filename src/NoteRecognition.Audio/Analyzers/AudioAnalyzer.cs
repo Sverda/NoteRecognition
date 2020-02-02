@@ -51,31 +51,28 @@ namespace NoteRecognition.Audio.Analyzers
                 FastFourierTransform.FFT(true, (int)Math.Log(FftLength, 2.0), LastFftSamples);
 
                 var specDataColumn = new List<double>();
-                foreach (var sample in LastFftSamples)
+                foreach (var sampleAfterFFT in LastFftSamples)
                 {
-                    var amplitude = Math.Sqrt(sample.X * sample.X + sample.Y * sample.Y);
-                    var specValue = Math.Log(amplitude) / Math.Log(10);
-                    const double min = -96.0;
-                    specValue = Math.Max(specValue, min);
-                    specValue = specValue / min * byte.MaxValue;
-                    specDataColumn.Add(specValue);
+                    var magnitude = 2 * Math.Sqrt(sampleAfterFFT.X * sampleAfterFFT.X + sampleAfterFFT.Y * sampleAfterFFT.Y) / FftLength;
+                    var amplitudeInDb = 10 * Math.Log10(magnitude);
+                    specDataColumn.Add(amplitudeInDb);
                 }
                 specDataColumn.Reverse();
                 SpecData.Add(specDataColumn);
             }
         }
 
-        public List<double> FindSpecColumnWithMaxMagnitude()
+        public List<double> FindSpecColumnWithMaxAmplitudeInDb()
         {
-            var maxMagnitude = 0d;
+            var maxAmplitude = double.MaxValue;
             var columnIndex = -1;
             foreach (var column in SpecData)
             {
-                foreach (var magnitude in column)
+                foreach (var amplitude in column)
                 {
-                    if (magnitude > maxMagnitude)
+                    if (amplitude < maxAmplitude)
                     {
-                        maxMagnitude = magnitude;
+                        maxAmplitude = amplitude;
                         columnIndex = SpecData.IndexOf(column);
                     }
                 }
@@ -84,25 +81,25 @@ namespace NoteRecognition.Audio.Analyzers
             return SpecData[columnIndex];
         }
 
-        public double FindMaxMagnitude()
+        public double FindMaxAmplitudeValue()
         {
-            var maxMagnitude = 0d;
+            var maxAmplitude = double.MaxValue;
             var columnIndex = -1;
-            var dataIndex = -1;
+            var rowIndex = -1;
             foreach (var column in SpecData)
             {
-                foreach (var magnitude in column)
+                foreach (var amplitude in column)
                 {
-                    if (magnitude > maxMagnitude)
+                    if (amplitude < maxAmplitude)
                     {
-                        maxMagnitude = magnitude;
+                        maxAmplitude = amplitude;
                         columnIndex = SpecData.IndexOf(column);
-                        dataIndex = column.IndexOf(magnitude);
+                        rowIndex = column.IndexOf(amplitude);
                     }
                 }
             }
 
-            return SpecData[columnIndex][dataIndex];
+            return SpecData[columnIndex][rowIndex];
         }
 
         private static IEnumerable<IEnumerable<float>> SplitIntoChunks(IEnumerable<float> collection, int chunkSize) => collection
