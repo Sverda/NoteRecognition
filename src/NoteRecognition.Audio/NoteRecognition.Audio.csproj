@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Analyzers\AudioAnalyzer.cs" />
     <Compile Include="Analyzers\NoteAnalyzer.cs" />
+    <Compile Include="Models\AmplitudeResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\WaveDataFileReader.cs" />
   </ItemGroup>

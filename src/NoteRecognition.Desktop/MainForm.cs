@@ -49,7 +49,9 @@ namespace NoteRecognition.Desktop
             fftPlotUc1.Analyzer = _audioAnalyzer;
             fftPlotUc1.UpdatePlot();
 
-            noteIndication.MaxMagnitudeInDb = _audioAnalyzer.FindMaxAmplitudeValue();
+            var findMaxAmplitude = _audioAnalyzer.FindMaxAmplitude();
+            noteIndication.MaxMagnitudeInDb = findMaxAmplitude.Amplitude;
+            noteIndication.MaxMagnitudeFrequency = findMaxAmplitude.Frequency;
             noteIndication.UpdateControl();
         }
 

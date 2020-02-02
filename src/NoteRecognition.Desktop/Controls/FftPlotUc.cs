@@ -15,14 +15,14 @@ namespace NoteRecognition.Desktop.Controls
         {
             InitializeComponent();
 
-            chart1.Titles.Add("FFT with Max Magnitude");
+            chart1.Titles.Add("FFT with Max Amplitude");
             chart1.Series.Add(_chartName);
             chart1.Series[_chartName].ChartType = SeriesChartType.FastLine;
             chart1.Series[_chartName].ChartArea = "ChartArea1";
             chart1.Series[_chartName].XValueType = ChartValueType.Auto;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
             chart1.ChartAreas[0].AxisX.Title = "Frequency [Hz]";
-            chart1.ChartAreas[0].AxisY.Title = "Magnitude [dB]";
+            chart1.ChartAreas[0].AxisY.Title = "Amplitude [dB]";
         }
 
         public void UpdatePlot()
@@ -30,11 +30,11 @@ namespace NoteRecognition.Desktop.Controls
             var fftSamples = Analyzer.FindSpecColumnWithMaxAmplitudeInDb();
             var amountOfPositiveFrequencyValues = fftSamples.Count / 2;
 
-            var maxFftFrequency = Analyzer.WaveFileReader.SamplesPerMillisecond * 1000;
+            var maxFftFrequency = Analyzer.WaveFileReader.SamplingFrequency;
             chart1.ChartAreas[0].AxisX.Maximum = maxFftFrequency;
             var frequencyStep = maxFftFrequency / amountOfPositiveFrequencyValues;
 
-            var frequency = 0;
+            var frequency = 0d;
             foreach (var intensityDb in fftSamples.Take(amountOfPositiveFrequencyValues))
             {
                 chart1.Series[_chartName].Points.AddXY(frequency, intensityDb);

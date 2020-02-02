@@ -15,6 +15,8 @@ namespace NoteRecognition.Audio.Readers
 
         public int SamplesPerMillisecond { get; set; }
 
+        public double SamplingFrequency => SamplesPerMillisecond * 1000d;
+
         public WaveDataFileReader(string filePath)
         {
             BufferSize = 1024 * 1024;

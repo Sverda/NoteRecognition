@@ -1,4 +1,5 @@
 ﻿using NAudio.Dsp;
+using NoteRecognition.Audio.Models;
 using NoteRecognition.Audio.Readers;
 using System;
 using System.Collections.Generic;
@@ -64,42 +65,38 @@ namespace NoteRecognition.Audio.Analyzers
 
         public List<double> FindSpecColumnWithMaxAmplitudeInDb()
         {
-            var maxAmplitude = double.MaxValue;
-            var columnIndex = -1;
-            foreach (var column in SpecData)
-            {
-                foreach (var amplitude in column)
-                {
-                    if (amplitude < maxAmplitude)
-                    {
-                        maxAmplitude = amplitude;
-                        columnIndex = SpecData.IndexOf(column);
-                    }
-                }
-            }
+            var max = FindMaxAmplitude();
 
-            return SpecData[columnIndex];
+            return SpecData[max.ColumnIndex];
         }
 
-        public double FindMaxAmplitudeValue()
+        public AmplitudeResult FindMaxAmplitude(double minFrequency = 390d, double maxFrequency = 790d)
         {
-            var maxAmplitude = double.MaxValue;
-            var columnIndex = -1;
-            var rowIndex = -1;
+            var maxAmplitude = new AmplitudeResult
+            {
+                Amplitude = double.MinValue
+            };
+
+            var minFrequencyIndex = (int)(minFrequency / WaveFileReader.SamplingFrequency * FftLength);
+            var maxFrequencyIndex = (int)(maxFrequency / WaveFileReader.SamplingFrequency * FftLength);
             foreach (var column in SpecData)
             {
-                foreach (var amplitude in column)
+                foreach (var amplitude in column.Take(maxFrequencyIndex).Skip(minFrequencyIndex))
                 {
-                    if (amplitude < maxAmplitude)
+                    if (amplitude > maxAmplitude.Amplitude)
                     {
-                        maxAmplitude = amplitude;
-                        columnIndex = SpecData.IndexOf(column);
-                        rowIndex = column.IndexOf(amplitude);
+                        maxAmplitude = new AmplitudeResult
+                        {
+                            ColumnIndex = SpecData.IndexOf(column),
+                            RowIndex = column.IndexOf(amplitude),
+                            Amplitude = amplitude,
+                            Frequency = column.IndexOf(amplitude) * WaveFileReader.SamplingFrequency / FftLength
+                        };
                     }
                 }
             }
 
-            return SpecData[columnIndex][rowIndex];
+            return maxAmplitude;
         }
 
         private static IEnumerable<IEnumerable<float>> SplitIntoChunks(IEnumerable<float> collection, int chunkSize) => collection

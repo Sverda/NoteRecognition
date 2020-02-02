@@ -81,8 +81,10 @@
             // noteIndication
             // 
             this.noteIndication.Location = new System.Drawing.Point(786, 446);
+            this.noteIndication.MaxMagnitudeFrequency = 0D;
+            this.noteIndication.MaxMagnitudeInDb = 0D;
             this.noteIndication.Name = "noteIndication";
-            this.noteIndication.Size = new System.Drawing.Size(262, 98);
+            this.noteIndication.Size = new System.Drawing.Size(262, 183);
             this.noteIndication.TabIndex = 4;
             // 
             // MainForm

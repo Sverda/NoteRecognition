@@ -49,7 +49,7 @@
             // 
             this.noteOutputDb.Enabled = false;
             this.noteOutputDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noteOutputDb.Location = new System.Drawing.Point(0, 76);
+            this.noteOutputDb.Location = new System.Drawing.Point(0, 51);
             this.noteOutputDb.Name = "noteOutputDb";
             this.noteOutputDb.Size = new System.Drawing.Size(254, 32);
             this.noteOutputDb.TabIndex = 6;
@@ -57,16 +57,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 60);
+            this.label1.Location = new System.Drawing.Point(3, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Magnitude (dB)";
+            this.label1.Text = "Amplitude (dB)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 124);
+            this.label3.Location = new System.Drawing.Point(3, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 8;
@@ -74,8 +74,9 @@
             // 
             // noteOutputHz
             // 
+            this.noteOutputHz.Enabled = false;
             this.noteOutputHz.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noteOutputHz.Location = new System.Drawing.Point(3, 140);
+            this.noteOutputHz.Location = new System.Drawing.Point(3, 115);
             this.noteOutputHz.Name = "noteOutputHz";
             this.noteOutputHz.Size = new System.Drawing.Size(251, 32);
             this.noteOutputHz.TabIndex = 9;
@@ -90,7 +91,7 @@
             this.Controls.Add(this.noteOutputDb);
             this.Controls.Add(this.label2);
             this.Name = "NoteIndication";
-            this.Size = new System.Drawing.Size(256, 202);
+            this.Size = new System.Drawing.Size(256, 170);
             this.ResumeLayout(false);
             this.PerformLayout();
 
