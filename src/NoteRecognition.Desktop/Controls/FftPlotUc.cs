@@ -15,7 +15,7 @@ namespace NoteRecognition.Desktop.Controls
         {
             InitializeComponent();
 
-            chart1.Titles.Add("Fast Fourier Transform");
+            chart1.Titles.Add("FFT with Max Magnitude");
             chart1.Series.Add(_chartName);
             chart1.Series[_chartName].ChartType = SeriesChartType.FastLine;
             chart1.Series[_chartName].ChartArea = "ChartArea1";
@@ -27,7 +27,8 @@ namespace NoteRecognition.Desktop.Controls
 
         public void UpdatePlot()
         {
-            var bins = Analyzer.FftSamples.Length;
+            var fftSamples = Analyzer.FindSpecColumnWithMaxMagnitude();
+            var bins = fftSamples.Count;
             var firstPeak = bins / 2;   // The first peak is for a positive frequency
 
             var maxFftFrequency = Analyzer.WaveFileReader.SamplesPerMillisecond * 1000;  // frequency (Hz) is cycles per second
@@ -36,8 +37,8 @@ namespace NoteRecognition.Desktop.Controls
             var frequency = 0;
             for (var i = 0; i < firstPeak; i++)
             {
-                var amplitude = Analyzer.FftSamples[i];
-                var intensityDb = 10 * Math.Log10(Math.Sqrt(amplitude.X * amplitude.X + amplitude.Y * amplitude.Y));
+                var amplitude = fftSamples[i];
+                var intensityDb = -10 * Math.Log(10) * Math.Log10(amplitude);
                 chart1.Series[_chartName].Points.AddXY(frequency, intensityDb);
                 frequency += frequencyStep;
             }

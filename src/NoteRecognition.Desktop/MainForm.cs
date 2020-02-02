@@ -46,11 +46,11 @@ namespace NoteRecognition.Desktop
             audioPlotUc1.Analyzer = _audioAnalyzer;
             audioPlotUc1.UpdatePlot();
 
-            noteIndication.Analyzer = _audioAnalyzer;
-            noteIndication.UpdateNote();
-
             fftPlotUc1.Analyzer = _audioAnalyzer;
             fftPlotUc1.UpdatePlot();
+
+            noteIndication.MaxMagnitude = _audioAnalyzer.FindMaxMagnitude();
+            noteIndication.UpdateControl();
         }
 
         private void dragNDrop_DragOver(object sender, DragEventArgs e)
