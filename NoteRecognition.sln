@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteRecognition.Desktop", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteRecognition.Audio", "src\NoteRecognition.Audio\NoteRecognition.Audio.csproj", "{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteRecognition.Tests", "src\NoteRecognition.Tests\NoteRecognition.Tests.csproj", "{DC5C84AA-350E-486A-80B4-D474F3D5C5C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F752580B-9640-4BCB-AD9C-7D1C9FFFE5C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5C84AA-350E-486A-80B4-D474F3D5C5C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5C84AA-350E-486A-80B4-D474F3D5C5C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5C84AA-350E-486A-80B4-D474F3D5C5C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5C84AA-350E-486A-80B4-D474F3D5C5C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
