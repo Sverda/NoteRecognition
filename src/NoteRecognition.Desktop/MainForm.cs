@@ -52,6 +52,7 @@ namespace NoteRecognition.Desktop
             var findMaxAmplitude = _audioAnalyzer.FindMaxAmplitude();
             noteIndication.MaxMagnitudeInDb = findMaxAmplitude.Amplitude;
             noteIndication.MaxMagnitudeFrequency = findMaxAmplitude.Frequency;
+            noteIndication.NoteName = new NoteAnalyzer().CheckNote(findMaxAmplitude.Frequency);
             noteIndication.UpdateControl();
         }
 

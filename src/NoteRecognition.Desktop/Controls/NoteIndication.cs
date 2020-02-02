@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Globalization;
+using System.Windows.Forms;
 
 namespace NoteRecognition.Desktop.Controls
 {
@@ -8,6 +9,8 @@ namespace NoteRecognition.Desktop.Controls
 
         public double MaxMagnitudeFrequency { get; set; }
 
+        public string NoteName { get; set; }
+
         public NoteIndication()
         {
             InitializeComponent();
@@ -15,8 +18,9 @@ namespace NoteRecognition.Desktop.Controls
 
         public void UpdateControl()
         {
-            noteOutputDb.Text = $"{MaxMagnitudeInDb}";
-            noteOutputHz.Text = $"{MaxMagnitudeFrequency}";
+            noteOutputDb.Text = MaxMagnitudeInDb.ToString(CultureInfo.InvariantCulture);
+            noteOutputHz.Text = MaxMagnitudeFrequency.ToString(CultureInfo.InvariantCulture);
+            noteOutputName.Text = NoteName;
         }
     }
 }

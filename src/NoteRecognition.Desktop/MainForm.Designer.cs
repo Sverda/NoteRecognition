@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dragNDrop = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.noteIndication = new NoteRecognition.Desktop.Controls.NoteIndication();
             this.fftPlotUc1 = new NoteRecognition.Desktop.Controls.FftPlotUc();
             this.audioPlotUc1 = new NoteRecognition.Desktop.Controls.AudioPlotUc();
-            this.noteIndication = new NoteRecognition.Desktop.Controls.NoteIndication();
             ((System.ComponentModel.ISupportInitialize)(this.dragNDrop)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +60,16 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(309, 26);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Drag And Drop a wav. file here";
+            this.label1.Text = "Drag And Drop a .wav file here";
+            // 
+            // noteIndication
+            // 
+            this.noteIndication.Location = new System.Drawing.Point(786, 446);
+            this.noteIndication.MaxMagnitudeFrequency = 0D;
+            this.noteIndication.MaxMagnitudeInDb = 0D;
+            this.noteIndication.Name = "noteIndication";
+            this.noteIndication.Size = new System.Drawing.Size(262, 211);
+            this.noteIndication.TabIndex = 4;
             // 
             // fftPlotUc1
             // 
@@ -77,15 +86,6 @@
             this.audioPlotUc1.Name = "audioPlotUc1";
             this.audioPlotUc1.Size = new System.Drawing.Size(705, 327);
             this.audioPlotUc1.TabIndex = 0;
-            // 
-            // noteIndication
-            // 
-            this.noteIndication.Location = new System.Drawing.Point(786, 446);
-            this.noteIndication.MaxMagnitudeFrequency = 0D;
-            this.noteIndication.MaxMagnitudeInDb = 0D;
-            this.noteIndication.Name = "noteIndication";
-            this.noteIndication.Size = new System.Drawing.Size(262, 183);
-            this.noteIndication.TabIndex = 4;
             // 
             // MainForm
             // 
