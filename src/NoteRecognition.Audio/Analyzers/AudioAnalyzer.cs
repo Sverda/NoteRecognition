@@ -13,6 +13,7 @@ namespace NoteRecognition.Audio.Analyzers
 
         public Complex[] LastFftSamples { get; set; }
 
+        //TODO: Create class for SpecData
         public List<List<double>> SpecData { get; set; }
 
         public IEnumerable<IEnumerable<float>> BatchSamplesPerMillisecond => WaveFileReader.GetSamplesBatchPerMillisecond();
@@ -65,12 +66,12 @@ namespace NoteRecognition.Audio.Analyzers
 
         public List<double> FindSpecColumnWithMaxAmplitudeInDb()
         {
-            var max = FindMaxAmplitude();
+            var max = FindMaxAmplitudeInScope();
 
             return SpecData[max.ColumnIndex];
         }
 
-        public AmplitudeResult FindMaxAmplitude(double minFrequency = 390d, double maxFrequency = 790d)
+        public AmplitudeResult FindMaxAmplitudeInScope(double minFrequency = 0, double maxFrequency = 870)
         {
             var maxAmplitude = new AmplitudeResult
             {
@@ -90,7 +91,7 @@ namespace NoteRecognition.Audio.Analyzers
                             ColumnIndex = SpecData.IndexOf(column),
                             RowIndex = column.IndexOf(amplitude),
                             Amplitude = amplitude,
-                            Frequency = column.IndexOf(amplitude) * WaveFileReader.SamplingFrequency / FftLength
+                            Frequency = column.IndexOf(amplitude) * WaveFileReader.SamplingFrequency / FftLength,
                         };
                     }
                 }

@@ -68,8 +68,8 @@ namespace NoteRecognition.Tests
             };
             audioAnalyzer.AnalyzeValues();
 
-            var maxFrequency = audioAnalyzer.FindMaxAmplitude().Frequency;
-            var actualResult = new NoteAnalyzer().CheckNote(maxFrequency);
+            var result = audioAnalyzer.FindMaxAmplitudeInScope();
+            var actualResult = new NoteAnalyzer().CheckNote(result.Frequency);
 
             AssertNote(actualResult);
         }
