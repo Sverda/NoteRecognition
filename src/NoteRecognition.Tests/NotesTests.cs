@@ -16,7 +16,19 @@ namespace NoteRecognition.Tests
         }
 
         [TestMethod]
+        public void Ab()
+        {
+            TestCurrentNote();
+        }
+
+        [TestMethod]
         public void A()
+        {
+            TestCurrentNote();
+        }
+
+        [TestMethod]
+        public void Bb()
         {
             TestCurrentNote();
         }
@@ -34,7 +46,19 @@ namespace NoteRecognition.Tests
         }
 
         [TestMethod]
+        public void Db()
+        {
+            TestCurrentNote();
+        }
+
+        [TestMethod]
         public void D()
+        {
+            TestCurrentNote();
+        }
+
+        [TestMethod]
+        public void Eb()
         {
             TestCurrentNote();
         }
@@ -47,6 +71,12 @@ namespace NoteRecognition.Tests
 
         [TestMethod]
         public void F()
+        {
+            TestCurrentNote();
+        }
+
+        [TestMethod]
+        public void Gb()
         {
             TestCurrentNote();
         }

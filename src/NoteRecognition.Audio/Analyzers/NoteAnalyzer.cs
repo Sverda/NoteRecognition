@@ -11,7 +11,7 @@
 
             if (403.5 <= frequency && frequency < 427.5)
             {
-                return "G#";
+                return "Ab";
             }
 
             if (427.5 <= frequency && frequency < 451.5)
@@ -21,7 +21,7 @@
 
             if (451.5 <= frequency && frequency < 479.5)
             {
-                return "A#";
+                return "Bb";
             }
 
             if (479.5 <= frequency && frequency < 508)
@@ -36,7 +36,7 @@
 
             if (538.5 <= frequency && frequency < 570.5)
             {
-                return "C#";
+                return "Db";
             }
 
             if (570.5 <= frequency && frequency < 604.5)
@@ -46,7 +46,7 @@
 
             if (604.5 <= frequency && frequency < 640.5)
             {
-                return "D#";
+                return "Eb";
             }
 
             if (640.5 <= frequency && frequency < 678.5)
@@ -61,7 +61,7 @@
 
             if (719 <= frequency && frequency < 762)
             {
-                return "F#";
+                return "Gb";
             }
 
             if (762 <= frequency && frequency < 830)
