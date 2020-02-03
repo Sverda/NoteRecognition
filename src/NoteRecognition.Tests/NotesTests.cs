@@ -51,6 +51,12 @@ namespace NoteRecognition.Tests
             TestCurrentNote();
         }
 
+        [TestMethod]
+        public void Unknown()
+        {
+            TestCurrentNote();
+        }
+
         private void TestCurrentNote()
         {
             var filePath = GetCurrentNotePath();

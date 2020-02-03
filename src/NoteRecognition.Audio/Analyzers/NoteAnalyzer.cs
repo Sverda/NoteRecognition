@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace NoteRecognition.Audio.Analyzers
+﻿namespace NoteRecognition.Audio.Analyzers
 {
     public class NoteAnalyzer
     {
         public string CheckNote(double frequency)
         {
-            if (frequency < 403.5)
+            if (369.9 <= frequency && frequency < 403.5)
             {
                 return "G";
             }
@@ -66,12 +64,12 @@ namespace NoteRecognition.Audio.Analyzers
                 return "F#";
             }
 
-            if (762 <= frequency)
+            if (762 <= frequency && frequency < 830)
             {
                 return "G";
             }
 
-            throw new ArgumentException("Unknown note");
+            return "Unknown";
         }
     }
 }
